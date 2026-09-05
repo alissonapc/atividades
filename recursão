@@ -1,0 +1,201 @@
+// ============================================================
+// Exercicio 01 - Contagem regressiva
+// ============================================================
+// Escreva uma funcao recursiva que imprima de n ate 1.
+//
+// contagemRegressiva(5)  ->  5 4 3 2 1
+// ============================================================
+#include <iostream>
+using namespace std;
+
+void contagemRegressiva(int n) {
+    // caso base: quando n chega a 0 (ou menos), encerra a recursao
+    if (n <= 0) {
+        return;
+    }
+
+    // imprime o valor atual
+    cout << n << " ";
+
+    // chamada recursiva, reduzindo o problema (n-1)
+    contagemRegressiva(n - 1);
+}
+
+int main() {
+    contagemRegressiva(5);
+    cout << endl;
+
+    return 0;
+}
+// ============================================================
+// Exercicio 02 - Contagem crescente
+// ============================================================
+// Escreva uma funcao recursiva que imprima de 1 ate n.
+//
+// contagemCrescente(5)  ->  1 2 3 4 5
+//
+// Compare com o exercicio 01. O codigo e quase o mesmo.
+// ============================================================
+
+#include <iostream>
+using namespace std;
+
+void contagemCrescente(int n) {
+
+    // caso base: encerra a recursao quando n chega a 0 (ou menos)
+    if (n <= 0) {
+        return;
+    }
+
+    // chamada recursiva primeiro, reduzindo o problema
+    contagemCrescente(n - 1);
+
+    // imprime o valor atual DEPOIS da chamada recursiva
+    cout << n << " ";
+
+}
+
+int main() {
+    contagemCrescente(5);
+    cout << endl;
+    return 0;
+}
+// ============================================================
+// Exercicio 03 - Soma de 1 ate n
+// ============================================================
+// Escreva uma funcao recursiva que devolva a soma de 1 ate n.
+//
+// somaAte(5)  ->  15
+// ============================================================
+#include <iostream>
+using namespace std;
+
+int somaAte(int n) {
+    // caso base: soma de 1 ate 0 (ou menos) e 0
+    if (n <= 0) {
+        return 0;
+    }
+
+    // devolve o valor atual combinado com a chamada recursiva
+    return n + somaAte(n - 1);
+}
+
+int main() {
+    cout << somaAte(5) << endl;
+    return 0;
+}
+// ============================================================
+// Exercicio 04 - Fatorial
+// ============================================================
+// Escreva uma funcao recursiva que devolva o fatorial de n.
+//
+// fatorial(5)  ->  120
+//
+// Lembre que o fatorial de 0 e 1.
+// ============================================================
+#include <iostream>
+using namespace std;
+
+int fatorial(int n) {
+    // caso base: fatorial de 0 (ou 1) e 1
+    if (n <= 1) {
+        return 1;
+    }
+
+    // devolve o valor atual combinado com a chamada recursiva
+    return n * fatorial(n - 1);
+}
+
+int main() {
+    cout << fatorial(5) << endl;
+    return 0;
+}// ============================================================
+// Exercicio 05 - Potencia
+// ============================================================
+// Escreva uma funcao recursiva que devolva base elevado a
+// expoente, sem usar a funcao pow.
+//
+// potencia(2, 8)  ->  256
+//
+// Lembre que qualquer numero elevado a 0 e 1.
+// ============================================================
+#include <iostream>
+using namespace std;
+
+int potencia(int base, int expoente) {
+    // caso base: qualquer numero elevado a 0 e 1
+    if (expoente == 0) {
+        return 1;
+    }
+
+    // devolve a base multiplicada pela chamada recursiva,
+    // reduzindo o expoente
+    return base * potencia(base, expoente - 1);
+}
+
+int main() {
+    cout << potencia(2, 8) << endl;
+    return 0;
+}// ============================================================
+// Exercicio 06 - Soma dos elementos de um vetor
+// ============================================================
+// Escreva uma funcao recursiva que devolva a soma dos
+// elementos de um vetor.
+//
+// itens = {4, 8, 15, 16, 23, 42}
+// somaVetor(itens, 6)  ->  108
+//
+// Toda recursao precisa de um caso base e de uma chamada que
+// reduza o problema.
+// ============================================================
+#include <iostream>
+using namespace std;
+
+int somaVetor(int itens[], int quantidade) {
+    // caso base: vetor vazio (ou invalido) tem soma 0
+    if (quantidade <= 0) {
+        return 0;
+    }
+
+    // soma o ultimo elemento com a soma do restante do vetor
+    return itens[quantidade - 1] + somaVetor(itens, quantidade - 1);
+}
+
+int main() {
+    int itens[6] = {4, 8, 15, 16, 23, 42};
+    cout << somaVetor(itens, 6) << endl;
+    return 0;
+}
+// ============================================================
+// Exercicio 11 - Fibonacci
+// ============================================================
+// Na sequencia de Fibonacci, cada numero e a soma dos dois
+// anteriores. Ela comeca em 0 e 1:
+//
+//     0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+//
+// Escreva uma funcao recursiva que devolva o n-esimo numero
+// da sequencia, contando a partir de zero.
+//
+// fibonacci(10)  ->  55
+// ============================================================
+#include <iostream>
+using namespace std;
+
+int fibonacci(int n) {
+    // caso base: os dois primeiros numeros da sequencia
+    if (n == 0) {
+        return 0;
+    }
+    if (n == 1) {
+        return 1;
+    }
+
+    // o n-esimo numero e a soma dos dois anteriores
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    cout << fibonacci(10) << endl;
+    return 0;
+}
